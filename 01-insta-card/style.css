@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.topbar span {
+  flex: 1;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.topbar svg {
+  width: 40px;
+  height: 40px;
+  weight: 600;
+}
+
+.name {
+  font-size: 25px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  gap: 30px;
+}
+
+.profileImg img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  list-style: none;
+  gap: 95px;
+}
+
+.stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+
+.number {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.description {
+  padding: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.actions {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  font-family: inherit;
+}
+
+.actions button {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #efefef;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+
+  cursor: pointer;
+}
+
+.actions button.primary {
+  background-color: #0095f6;
+  color: white;
+}
