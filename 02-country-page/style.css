@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto
+}
+
+.searchSection {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+}
+
+#searchButton {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.countryCard img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+
+  /* 1. 모든 국기를 3:2 비율로 강제 고정! (제일 무난하고 예쁜 비율이야) */
+  aspect-ratio: 3 / 2;
+
+  /* 2. 비율이 안 맞는 국기는 찌그러뜨리지 말고 빈틈없이 꽉 채우기 (넘치는 건 살짝 잘림) */
+  object-fit: cover;
+}
+
+.countryCard h3 {
+  margin-top: 15px;
+  text-align: center;
+}
