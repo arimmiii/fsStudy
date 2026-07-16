@@ -28,7 +28,6 @@ async function getData() {
 
 getData();
 
-
 // 데이터를 받아 화면에 카드로 그려주는 함수
 function renderCard(data) {
   if (data.length === 0) return;
@@ -40,6 +39,14 @@ function renderCard(data) {
     //카드 하나씩 만들기
     const cardDiv = document.createElement('div');
     cardDiv.className = 'countryCard';
+    cardDiv.style.cursor = 'pointer';
+
+    // 카드 클릭 시 상세 페이지 이동
+    cardDiv.addEventListener('click', () => {
+      window.location.href = `./detail.html?name=${country.name}`;
+    });
+
+    //카드 요소 만들고 append
     const bgImg = document.createElement('img');
     bgImg.src = countryUrl;
     bgImg.alt = `${country.name} flag`;
@@ -55,6 +62,30 @@ function renderCard(data) {
 }
 
 // 검색 기능
+const searchForm = document.getElementById('searchForm');
 
+async function handleSubmit(event) {
+  event.preventDefault();
 
+  const keyword = searchInput.value.trim().toLowerCase();
+  const searchUrl = `https://api.api-ninjas.com/v1/country?name=${keyword}`;
+
+  try {
+    const response = await fetch(searchUrl, { headers: { 'X-Api-Key': API_KEY } });
+    const searchData = await response.json();
+
+    if (searchData.length === 0) {
+      alert("there's no result")
+      return;
+    }
+    cardSection.innerHTML = '';
+    renderCard(searchData);
+
+  } catch (error) {
+    console.log("검색 중 에러 발생", error);
+  }
+
+}
+searchForm.addEventListener('submit', handleSubmit);
+searchButton.addEventListener('click', handleSubmit);
 // 상세 페이지 이동
