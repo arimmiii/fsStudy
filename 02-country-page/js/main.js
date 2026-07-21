@@ -6,7 +6,6 @@ let countries = [];
 
 // 서버에서 국가들 데이터 가져오기
 const url = "https://api.api-ninjas.com/v1/country?limit=20";
-const API_KEY = "n78SYgWxgt4x6huNfpgiCV9Nwvq6yA7ZtEcBYpW0";
 
 
 async function getData() {
@@ -88,4 +87,5 @@ async function handleSubmit(event) {
 }
 searchForm.addEventListener('submit', handleSubmit);
 searchButton.addEventListener('click', handleSubmit);
+
 // 상세 페이지 이동
