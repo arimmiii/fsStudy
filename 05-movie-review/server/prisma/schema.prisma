@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement()) //기본키, 새 유저 등록마다 자동으로 번호 매기기 
+  email String @unique
+  password String
+  nickname String
+  createdAt DateTime @default(now()) // 가입시각은 자동으로 현재 시간 기록
+
+  reviews Review[]
+}
+
+model Review{
+  id Int @id @default(autoincrement())
+  title String
+  content String @db.Text // 일반 String과 달리 길이 제한 없음
+  rating Int
+  movieId Int
+  movieTitle String
+  moviePoster String? //이미지 파일은 DB에 넣지 X. 이미지의 주소를 넣음
+  createdAt DateTime @default(now())
+  //수정될 때마다 계속 갱신되어야 하므로 @updatedAt 사용
+  updatedAt DateTime @updatedAt
+
+  authorId Int
+  //이 리뷰의 authorId와 User의 id와 연결
+  author User @relation(fields: [authorId], references: [id])
+}
